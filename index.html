@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ECASisDin - New Trends in Non-Smooth Systems</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --accent-color: #3498db;
+            --bg-color: #f9fbfd;
+            --text-color: #333;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 3rem 2rem;
+        }
+        .header-content {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+		header .theme-title {
+            font-size: 1.9rem;
+            font-weight: 800;
+            color: #007c76; /* Tom dourado para destaque */
+            margin: 15px 0;
+            /*text-shadow: 1px 1px 3px rgba(0,0,0,0.3);*/
+            letter-spacing: 0.5px;
+			/*-webkit-text-stroke: 0.3px #FFFFFF;*/
+        }
+        .title-container {
+            text-align: center;
+            flex: 1;
+        }
+        .header-content img {
+            max-height: 10vw;
+            background: white;
+            padding: 10px;
+            border-radius: 8px;
+        }
+        header h1 {
+            margin: 0 0 5px 0;
+            font-size: 2.8rem;
+        }
+        header .full-name {
+            font-size: 1.15rem;
+            font-style: italic;
+            margin-bottom: 15px;
+            color: #bdc3c7;
+        }
+        header p {
+            font-size: 1.2rem;
+            margin: 0;
+            opacity: 0.9;
+        }
+        .location-date {
+            margin-top: 15px; 
+            font-weight: bold;
+            color: #ecf0f1;
+            font-size: 1.1rem;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        h2 {
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 0.5rem;
+            margin-top: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .timeline {
+            position: relative;
+            margin: 2rem 0 0 1rem;
+            padding-left: 2rem;
+            border-left: 3px solid var(--accent-color);
+        }
+        .day-marker {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.6rem 1.5rem;
+            border-radius: 30px;
+            display: inline-block;
+            font-weight: bold;
+            margin-left: -3rem;
+            margin-bottom: 2rem;
+            margin-top: 1rem;
+            position: relative;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            font-size: 1.1rem;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2rem;
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.04);
+            transition: all 0.2s ease;
+            border: 1px solid #eee;
+        }
+        .timeline-item.clickable {
+            cursor: pointer;
+        }
+        .timeline-item.clickable:hover {
+            transform: translateX(8px);
+            border-left: 4px solid var(--accent-color);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+        .timeline-dot {
+            position: absolute;
+            left: -2.55rem;
+            top: 1.8rem;
+            width: 14px;
+            height: 14px;
+            background-color: white;
+            border: 4px solid var(--accent-color);
+            border-radius: 50%;
+        }
+
+        .time-badge {
+            background-color: #eef2f5;
+            color: var(--primary-color);
+            padding: 5px 12px;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 0.8rem;
+        }
+        .timeline-item h4 {
+            margin: 0 0 10px 0;
+            color: var(--primary-color);
+            font-size: 1.3rem;
+        }
+        .proponent {
+            display: inline-block;
+            background-color: #f8f9fa;
+            color: #555;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 0.95rem;
+            border-left: 3px solid #7f8c8d;
+            margin-bottom: 10px;
+        }
+
+        .toggle-btn {
+            display: inline-block;
+            margin-top: 5px;
+            color: var(--accent-color);
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        .abstract-content {
+            display: none;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px dashed #ddd;
+            color: #555;
+            line-height: 1.7;
+            font-size: 0.95rem;
+        }
+        .abstract-content.active {
+            display: block;
+            animation: fadeIn 0.4s ease;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background: #eee;
+            margin-top: 3rem;
+            font-size: 0.9rem;
+            color: #666;
+        }
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+            .header-content img {
+                max-height: 120px;
+            }
+            .timeline {
+                margin-left: 0.5rem;
+                padding-left: 1rem;
+            }
+            .day-marker {
+                margin-left: -1.5rem;
+            }
+            .timeline-dot {
+                left: -1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-content">
+            
+            <div class="logo-right">
+                <img src="https://placehold.co/150x80/ecf0f1/2c3e50?text=Logo+IMECC" alt="Logo IMECC-UNICAMP"> 
+            </div>
+            <div class="title-container">
+                <h1>ECASisDin</h1>
+                <p class="full-name">Encontro de Colaboração Acadêmica em Sistemas Dinâmicos</p>
+                <div class="theme-title">New Trends in Non-Smooth Systems</div>
+                <p class="location-date">08 e 09 de Junho de 2026 | IMECC-UNICAMP</p>
+            </div>
+			<div class="logo-left">
+                <!-- Substitua o link abaixo pelo logo real da Rede TeQA -->
+                <img src="TeQA-logo-transp.png" alt="Logo Rede TeQA">
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <h2>Programação do Evento</h2>
+        
+        <div class="timeline">
+            <!-- DIA 1 -->
+            <div class="day-marker">08 de Junho (Segunda-feira)</div>
+            
+            <div class="timeline-item clickable" onclick="toggleAbstract(this)">
+                <div class="timeline-dot"></div>
+                <span class="time-badge">14:00 - 15:00</span>
+                <h4>TEMA 1: Fundamentos e Dinâmica de Deslizamento</h4>
+                <div class="proponent"><strong>Proponente:</strong> [Nome do(a) Pesquisador(a)]</div>
+                <br>
+                <div class="toggle-btn">+ Ver Resumo</div>
+                <div class="abstract-content">
+                    <p>Uma visão geral sobre o comportamento geométrico de sistemas suaves por partes, com foco em sistemas de Filippov, regiões de deslizamento e a classificação de singularidades na variedade de descontinuidade. O proponente apresentará conceitos-chave para guiar o debate subsequente.</p>
+                </div>
+            </div>
+            
+            <div class="timeline-item clickable" onclick="toggleAbstract(this)">
+                <div class="timeline-dot"></div>
+                <span class="time-badge">15:00 - 16:00</span>
+                <h4>TEMA 2: Teoria de Averaging em Sistemas Não Suaves</h4>
+                <div class="proponent"><strong>Proponente:</strong> [Nome do(a) Pesquisador(a)]</div>
+                <br>
+                <div class="toggle-btn">+ Ver Resumo</div>
+                <div class="abstract-content">
+                    <p>Exploração de métodos de perturbação e teoria de averaging adaptados para campos de vetores descontínuos, analisando a existência e estabilidade de ciclos limites que cruzam zonas de comutação.</p>
+                </div>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <span class="time-badge">16:00 - 17:30</span>
+                <h4>Discussão livre e colaboração</h4>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-dot" style="border-color: #f39c12;"></div>
+                <span class="time-badge">17:30 - 20:00</span>
+                <h4>Confraternização</h4>
+                <p style="margin-top: 5px; color: #666; font-size: 0.95rem;">Momento de integração e troca de ideias entre os participantes.</p>
+            </div>
+
+            <!-- DIA 2 -->
+            <div class="day-marker" style="margin-top: 3rem;">09 de Junho (Terça-feira)</div>
+            
+            <div class="timeline-item clickable" onclick="toggleAbstract(this)">
+                <div class="timeline-dot"></div>
+                <span class="time-badge">09:00 - 10:00</span>
+                <h4>TEMA 3: Variedades Invariantes e Bifurcações</h4>
+                <div class="proponent"><strong>Proponente:</strong> [Nome do(a) Pesquisador(a)]</div>
+                <br>
+                <div class="toggle-btn">+ Ver Resumo</div>
+                <div class="abstract-content">
+                    <p>Estudo sobre a persistência e dinâmica em torno de Variedades Invariantes Normalmente Hiperbólicas (NHIMs) no contexto não suave, além de bifurcações induzidas pela fronteira.</p>
+                </div>
+            </div>
+            
+            <div class="timeline-item clickable" onclick="toggleAbstract(this)">
+                <div class="timeline-dot"></div>
+                <span class="time-badge">10:00 - 11:00</span>
+                <h4>TEMA 4: Modelagem e Aplicações Físicas</h4>
+                <div class="proponent"><strong>Proponente:</strong> [Nome do(a) Pesquisador(a)]</div>
+                <br>
+                <div class="toggle-btn">+ Ver Resumo</div>
+                <div class="abstract-content">
+                    <p>Como as ferramentas teóricas discutidas se traduzem na resolução de problemas reais, modelando fenômenos que envolvem impacto, atrito seco e chaves eletrônicas em física e engenharia.</p>
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <span class="time-badge">11:00 - 12:30</span>
+                <h4>Discussão livre e colaboração</h4>
+            </div>
+
+        </div>
+    </div>
+
+    <footer>
+        <p>Apoio: Rede TeQA (Teoria Qualitativa e Aplicações) & IMECC-UNICAMP</p>
+    </footer>
+
+    <script>
+        // Script simples para gerenciar a abertura e fechamento dos resumos
+        function toggleAbstract(element) {
+            const abstract = element.querySelector('.abstract-content');
+            const btn = element.querySelector('.toggle-btn');
+            
+            if (abstract) {
+                if (abstract.classList.contains('active')) {
+                    abstract.classList.remove('active');
+                    btn.innerText = '+ Ver Resumo';
+                } else {
+                    abstract.classList.add('active');
+                    btn.innerText = '- Ocultar Resumo';
+                }
+            }
+        }
+    </script>
+</body>
+</html>
