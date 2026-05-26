@@ -52,7 +52,7 @@
         }
         .header-content img {
             max-height: 10vw;
-            background: white;
+            background: rgba(255, 255, 255, 0.00);
             padding: 10px;
             border-radius: 8px;
             transition: all 0.3s ease; /* Adiciona suavidade na transição */
@@ -245,9 +245,9 @@
     <header>
         <div class="header-content">
             
-            <div class="logo-right">
-                <a href="https://www.ime.unicamp.br/" target="_blank" title="Visitar site do IMECC-UNICAMP">
-                    <img src="https://placehold.co/150x80/ecf0f1/2c3e50?text=Logo+IMECC" alt="Logo IMECC-UNICAMP"> 
+            <div class="logo-left">
+                <a href="https://teqa.ime.unicamp.br/" target="_blank" title="Visitar site da Rede TeQA">
+                    <img src="TeQA-logo-transp.png" alt="Logo Rede TeQA"> 
                 </a>
             </div>
             <div class="title-container">
@@ -256,9 +256,9 @@
                 <div class="theme-title">New Trends in Non-Smooth Systems</div>
                 <p class="location-date">June 8th and 9th, 2026 | IMECC-UNICAMP</p>
             </div>
-            <div class="logo-left">
-                <a href="https://teqa.ime.unicamp.br/" target="_blank" title="Visitar site da Rede TeQA">
-                    <img src="TeQA-logo-transp.png" alt="Logo Rede TeQA"> 
+            <div class="logo-right">
+                <a href="https://www.ime.unicamp.br/" target="_blank" title="Visitar site do IMECC-UNICAMP">
+                    <img src="logo-imecc.svg" alt="Logo IMECC-UNICAMP"> 
                 </a>
             </div>
         </div>
@@ -270,6 +270,12 @@
         <div class="timeline">
             <div class="day-marker">June 8th (Monday)</div>
             
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <span class="time-badge">13:40 - 14:00</span>
+                <h4>Opening Session</h4>
+            </div>
+
             <div class="timeline-item clickable" onclick="toggleAbstract(this)">
                 <div class="timeline-dot"></div>
                 <span class="time-badge">14:00 - 15:00</span>
@@ -282,13 +288,19 @@
                 </div>
             </div>
             
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <span class="time-badge">15:00 - 15:30</span>
+                <h4>Coffee Break</h4>
+            </div>
+            
             <div class="timeline-item clickable" onclick="toggleAbstract(this)">
                 <div class="timeline-dot"></div>
-                <span class="time-badge">15:00 - 16:00</span>
+                <span class="time-badge">15:30 - 16:30</span>
                 <h4>SESSION 2: Recent thoughts on singularities and discontinuities — still a lot to learn!</h4>
                 <div class="proponent"><strong>Speaker:</strong> Mike R. Jeffrey (University of Bristol)</div>
                 <br>
-                <div class="toggle-btn">+ Ver Resumo</div>
+                <div class="toggle-btn">+ View Abstract</div>
                 <div class="abstract-content">
                     <p>TBA</p>
                 </div>
@@ -296,16 +308,9 @@
 
             <div class="timeline-item">
                 <div class="timeline-dot"></div>
-                <span class="time-badge">16:00 - 17:30</span>
+                <span class="time-badge">16:30 - 17:30</span>
                 <h4>Collaborative Window</h4>
                 <p style="margin-top: 5px; color: #666; font-size: 0.95rem;">A time for researchers to work together, meet new people, and potentially start new collaborations.</p>
-            </div>
-
-            <div class="timeline-item">
-                <div class="timeline-dot" style="border-color: #f39c12;"></div>
-                <span class="time-badge">17:30 - 20:00</span>
-                <h4>Get-together</h4>
-                <p style="margin-top: 5px; color: #666; font-size: 0.95rem;">Momento de integração e troca de ideias entre os participantes.</p>
             </div>
 
             <div class="day-marker" style="margin-top: 3rem;">June 9th (Tuesday)</div>
@@ -313,30 +318,36 @@
             <div class="timeline-item clickable" onclick="toggleAbstract(this)">
                 <div class="timeline-dot"></div>
                 <span class="time-badge">09:00 - 10:00</span>
-                <h4>TEMA 3: Variedades Invariantes e Bifurcações</h4>
-                <div class="proponent"><strong>Proponente:</strong> [Nome do(a) Pesquisador(a)]</div>
+                <h4>SESSION 3: TBA</h4>
+                <div class="proponent"><strong>Speaker:</strong> TBA</div>
                 <br>
-                <div class="toggle-btn">+ Ver Resumo</div>
+                <div class="toggle-btn">+ View Abstract</div>
                 <div class="abstract-content">
-                    <p>Estudo sobre a persistência e dinâmica em torno de Variedades Invariantes Normalmente Hiperbólicas (NHIMs) no contexto não suave, além de bifurcações induzidas pela fronteira.</p>
-                </div>
-            </div>
-            
-            <div class="timeline-item clickable" onclick="toggleAbstract(this)">
-                <div class="timeline-dot"></div>
-                <span class="time-badge">10:00 - 11:00</span>
-                <h4>TEMA 4: Modelagem e Aplicações Físicas</h4>
-                <div class="proponent"><strong>Proponente:</strong> [Nome do(a) Pesquisador(a)]</div>
-                <br>
-                <div class="toggle-btn">+ Ver Resumo</div>
-                <div class="abstract-content">
-                    <p>Como as ferramentas teóricas discutidas se traduzem na resolução de problemas reais, modelando fenômenos que envolvem impacto, atrito seco e chaves eletrônicas em física e engenharia.</p>
+                    <p>TBA</p>
                 </div>
             </div>
             
             <div class="timeline-item">
                 <div class="timeline-dot"></div>
-                <span class="time-badge">11:00 - 12:30</span>
+                <span class="time-badge">10:00 - 10:30</span>
+                <h4>Coffee Break</h4>
+            </div>
+            
+            <div class="timeline-item clickable" onclick="toggleAbstract(this)">
+                <div class="timeline-dot"></div>
+                <span class="time-badge">10:30 - 11:30</span>
+                <h4>SESSION 4: TBA</h4>
+                <div class="proponent"><strong>Speaker:</strong> TBA</div>
+                <br>
+                <div class="toggle-btn">+ View Abstract</div>
+                <div class="abstract-content">
+                    <p>TBA</p>
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <span class="time-badge">11:30 - 12:30</span>
                 <h4>Collaborative Window</h4>
                 <p style="margin-top: 5px; color: #666; font-size: 0.95rem;">A time for researchers to work together, meet new people, and potentially start new collaborations.</p>
             </div>
