@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ECASisDin - New Trends in Non-Smooth Systems</title>
+    
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
     <style>
         :root {
             --primary-color: #2c3e50;
@@ -33,14 +37,14 @@
             align-items: center;
             gap: 20px;
         }
-		header .theme-title {
+        header .theme-title {
             font-size: 1.9rem;
             font-weight: 800;
             color: #007c76; /* Tom dourado para destaque */
             margin: 15px 0;
             /*text-shadow: 1px 1px 3px rgba(0,0,0,0.3);*/
             letter-spacing: 0.5px;
-			/*-webkit-text-stroke: 0.3px #FFFFFF;*/
+            /*-webkit-text-stroke: 0.3px #FFFFFF;*/
         }
         .title-container {
             text-align: center;
@@ -51,6 +55,12 @@
             background: white;
             padding: 10px;
             border-radius: 8px;
+            transition: all 0.3s ease; /* Adiciona suavidade na transição */
+        }
+        /* Efeito Hover nos links dos logos */
+        .header-content a:hover img {
+            transform: scale(1.05) translateY(-3px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.2);
         }
         header h1 {
             margin: 0 0 5px 0;
@@ -193,9 +203,22 @@
             padding: 2rem;
             background: #eee;
             margin-top: 3rem;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             color: #666;
         }
+        
+        footer a {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.2s ease;
+        }
+        
+        footer a:hover {
+            color: var(--primary-color);
+            text-decoration: underline;
+        }
+        
         @media (max-width: 768px) {
             .header-content {
                 flex-direction: column;
@@ -223,37 +246,39 @@
         <div class="header-content">
             
             <div class="logo-right">
-                <img src="https://placehold.co/150x80/ecf0f1/2c3e50?text=Logo+IMECC" alt="Logo IMECC-UNICAMP"> 
+                <a href="https://www.ime.unicamp.br/" target="_blank" title="Visitar site do IMECC-UNICAMP">
+                    <img src="https://placehold.co/150x80/ecf0f1/2c3e50?text=Logo+IMECC" alt="Logo IMECC-UNICAMP"> 
+                </a>
             </div>
             <div class="title-container">
                 <h1>ECASisDin</h1>
                 <p class="full-name">Encontro de Colaboração Acadêmica em Sistemas Dinâmicos</p>
                 <div class="theme-title">New Trends in Non-Smooth Systems</div>
-                <p class="location-date">08 e 09 de Junho de 2026 | IMECC-UNICAMP</p>
+                <p class="location-date">June 8th and 9th, 2026 | IMECC-UNICAMP</p>
             </div>
-			<div class="logo-left">
-                <!-- Substitua o link abaixo pelo logo real da Rede TeQA -->
-                <img src="TeQA-logo-transp.png" alt="Logo Rede TeQA">
+            <div class="logo-left">
+                <a href="https://teqa.ime.unicamp.br/" target="_blank" title="Visitar site da Rede TeQA">
+                    <img src="TeQA-logo-transp.png" alt="Logo Rede TeQA"> 
+                </a>
             </div>
         </div>
     </header>
 
     <div class="container">
-        <h2>Programação do Evento</h2>
+        <h2>Schedule</h2>
         
         <div class="timeline">
-            <!-- DIA 1 -->
-            <div class="day-marker">08 de Junho (Segunda-feira)</div>
+            <div class="day-marker">June 8th (Monday)</div>
             
             <div class="timeline-item clickable" onclick="toggleAbstract(this)">
                 <div class="timeline-dot"></div>
                 <span class="time-badge">14:00 - 15:00</span>
-                <h4>TEMA 1: Fundamentos e Dinâmica de Deslizamento</h4>
-                <div class="proponent"><strong>Proponente:</strong> [Nome do(a) Pesquisador(a)]</div>
+                <h4>SESSION 1: Stochastic Regularisation of Filippov Differential Equations</h4>
+                <div class="proponent"><strong>Speaker:</strong> Matheus Manzatto de Castro</div>
                 <br>
-                <div class="toggle-btn">+ Ver Resumo</div>
+                <div class="toggle-btn">+ View Abstract</div>
                 <div class="abstract-content">
-                    <p>Uma visão geral sobre o comportamento geométrico de sistemas suaves por partes, com foco em sistemas de Filippov, regiões de deslizamento e a classificação de singularidades na variedade de descontinuidade. O proponente apresentará conceitos-chave para guiar o debate subsequente.</p>
+                    <p>In this talk, I will discuss how stochastic perturbations of Filippov differential equations, of the form \( d x_t = F(x_t) dt + \varepsilon d W_t \) , converge to a Filippov convention solution as the noise strength \( \varepsilon \) approaches zero. This is an ongoing joint work with Prof. Douglas Novaes.</p>
                 </div>
             </div>
             
@@ -272,18 +297,18 @@
             <div class="timeline-item">
                 <div class="timeline-dot"></div>
                 <span class="time-badge">16:00 - 17:30</span>
-                <h4>Discussão livre e colaboração</h4>
+                <h4>Collaborative Window</h4>
+                <p style="margin-top: 5px; color: #666; font-size: 0.95rem;">A time for researchers to work together, meet new people, and potentially start new collaborations.</p>
             </div>
 
             <div class="timeline-item">
                 <div class="timeline-dot" style="border-color: #f39c12;"></div>
                 <span class="time-badge">17:30 - 20:00</span>
-                <h4>Confraternização</h4>
+                <h4>Get-together</h4>
                 <p style="margin-top: 5px; color: #666; font-size: 0.95rem;">Momento de integração e troca de ideias entre os participantes.</p>
             </div>
 
-            <!-- DIA 2 -->
-            <div class="day-marker" style="margin-top: 3rem;">09 de Junho (Terça-feira)</div>
+            <div class="day-marker" style="margin-top: 3rem;">June 9th (Tuesday)</div>
             
             <div class="timeline-item clickable" onclick="toggleAbstract(this)">
                 <div class="timeline-dot"></div>
@@ -312,14 +337,15 @@
             <div class="timeline-item">
                 <div class="timeline-dot"></div>
                 <span class="time-badge">11:00 - 12:30</span>
-                <h4>Discussão livre e colaboração</h4>
+                <h4>Collaborative Window</h4>
+                <p style="margin-top: 5px; color: #666; font-size: 0.95rem;">A time for researchers to work together, meet new people, and potentially start new collaborations.</p>
             </div>
 
         </div>
     </div>
 
     <footer>
-        <p>Apoio: Rede TeQA (Teoria Qualitativa e Aplicações) & IMECC-UNICAMP</p>
+        <p>Suporte: <a href="https://teqa.ime.unicamp.br/" target="_blank">Rede TeQA (Teoria Qualitativa e Aplicações)</a> & <a href="https://www.ime.unicamp.br/" target="_blank">IMECC-UNICAMP</a></p>
     </footer>
 
     <script>
@@ -331,10 +357,10 @@
             if (abstract) {
                 if (abstract.classList.contains('active')) {
                     abstract.classList.remove('active');
-                    btn.innerText = '+ Ver Resumo';
+                    btn.innerText = '+ View Abstract';
                 } else {
                     abstract.classList.add('active');
-                    btn.innerText = '- Ocultar Resumo';
+                    btn.innerText = '- Hide Abstract';
                 }
             }
         }
