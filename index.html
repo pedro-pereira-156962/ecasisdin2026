@@ -51,7 +51,7 @@
             flex: 1;
         }
         .header-content img {
-            max-height: 10vw;
+            max-height: 180px;
             background: rgba(255, 255, 255, 0.00);
             padding: 10px;
             border-radius: 8px;
@@ -219,13 +219,56 @@
             text-decoration: underline;
         }
         
+        /* Estilos da caixa de Inscrição */
+        .registration-box {
+            background-color: white;
+            border-left: 5px solid var(--primary-color);
+            padding: 2rem;
+            margin-bottom: 3rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            text-align: center;
+        }
+        
+        .registration-box h3 {
+            color: var(--primary-color);
+            font-size: 1.6rem;
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+        }
+        
+        .registration-box p {
+            color: #555;
+            font-size: 1.05rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .btn-register {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(44, 62, 80, 0.3);
+        }
+        
+        .btn-register:hover {
+            background-color: #1a252f;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(44, 62, 80, 0.4);
+        }
+        
         @media (max-width: 768px) {
             .header-content {
                 flex-direction: column;
                 gap: 1.5rem;
             }
             .header-content img {
-                max-height: 120px;
+                max-height: 140px;
             }
             .timeline {
                 margin-left: 0.5rem;
@@ -265,6 +308,16 @@
     </header>
 
     <div class="container">
+        
+        <!-- Bloco de Inscrição -->
+        <div class="registration-box">
+            <h3>Registration</h3>
+            <p>Please register using the Google Form below to help us better organize the event.</p>
+            <a href="https://forms.gle/cxkUcQWHZ14kUzYHA" target="_blank" class="btn-register">
+                Register Here
+            </a>
+        </div>
+
         <h2>Schedule</h2>
         
         <div class="timeline">
@@ -319,7 +372,7 @@
                 <div class="timeline-dot"></div>
                 <span class="time-badge">09:00 - 10:00</span>
                 <h4>SESSION 3: TBA</h4>
-                <div class="proponent"><strong>Speaker:</strong> TBA</div>
+                <div class="proponent"><strong>Speaker:</strong> Tiago de Carvalho (UNESP)</div>
                 <br>
                 <div class="toggle-btn">+ View Abstract</div>
                 <div class="abstract-content">
