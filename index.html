@@ -218,47 +218,108 @@
             text-decoration: underline;
         }
         
-        /* Estilos da caixa de Inscrição */
-        .registration-box {
-            background-color: white;
-            border-left: 5px solid var(--primary-color);
-            padding: 2rem;
+        /* Estilos da Barra de Ações (Slick) */
+        .quick-actions-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: white;
+            padding: 1.5rem 2rem;
             margin-bottom: 3rem;
             border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            text-align: center;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.04);
+            border-left: 4px solid var(--primary-color);
+            gap: 1.5rem;
         }
         
-        .registration-box h3 {
-            color: var(--primary-color);
-            font-size: 1.6rem;
-            margin-top: 0;
-            margin-bottom: 0.5rem;
-        }
-        
-        .registration-box p {
+        .quick-actions-text p {
+            margin: 0;
             color: #555;
-            font-size: 1.05rem;
-            margin-bottom: 1.5rem;
+            font-size: 1rem;
         }
         
-        .btn-register {
-            display: inline-block;
-            background-color: var(--primary-color);
-            color: white;
-            padding: 12px 30px;
-            text-decoration: none;
+        .quick-actions-text strong {
+            color: var(--primary-color);
+            display: block;
+            font-size: 1.2rem;
+            margin-bottom: 0.3rem;
+        }
+        
+        .quick-actions-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-shrink: 0;
+        }
+        
+        .btn {
+            padding: 10px 24px;
             border-radius: 30px;
             font-weight: bold;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 10px rgba(44, 62, 80, 0.3);
+            text-decoration: none;
+            transition: all 0.2s ease;
+            font-size: 0.95rem;
+            text-align: center;
+            box-sizing: border-box; /* Adicionado para evitar que o botão vaze a caixa no mobile */
         }
         
-        .btn-register:hover {
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+            border: 2px solid var(--primary-color);
+            box-shadow: 0 4px 10px rgba(44, 62, 80, 0.2);
+        }
+        
+        .btn-primary:hover {
             background-color: #1a252f;
+            border-color: #1a252f;
             transform: translateY(-2px);
-            box-shadow: 0 6px 15px rgba(44, 62, 80, 0.4);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            color: var(--accent-color);
+            border: 2px solid var(--accent-color);
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--accent-color);
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        /* Efeito Pulse para o botão Ao Vivo */
+        .live-indicator {
+            display: none; /* Escondido por padrão */
+            width: 10px;
+            height: 10px;
+            background-color: #e74c3c;
+            border-radius: 50%;
+            margin-right: 8px;
+            box-shadow: 0 0 0 0 rgba(231, 76, 60, 0.7);
+            animation: pulse-red 1.5s infinite;
+        }
+        
+        @keyframes pulse-red {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(231, 76, 60, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 8px rgba(231, 76, 60, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(231, 76, 60, 0); }
+        }
+        
+        .btn.is-live {
+            border-color: #e74c3c;
+            color: #e74c3c;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .btn.is-live:hover {
+            background-color: #e74c3c;
+            color: white;
+        }
+        
+        .btn.is-live .live-indicator {
+            display: block; /* Mostra o ponto pulsante quando a classe for ativada */
         }
         
         @media (max-width: 768px) {
@@ -278,6 +339,17 @@
             }
             .timeline-dot {
                 left: -1.5rem;
+            }
+            .quick-actions-bar {
+                flex-direction: column;
+                text-align: center;
+            }
+            .quick-actions-buttons {
+                flex-direction: column;
+                width: 100%;
+            }
+            .btn {
+                width: 100%;
             }
         }
     </style>
@@ -308,13 +380,21 @@
 
     <div class="container">
         
-        <!-- Bloco de Inscrição -->
-        <div class="registration-box">
-            <h3>Registration</h3>
-            <p>Please register using the Google Form below to help us better organize the event.</p>
-            <a href="https://forms.gle/cxkUcQWHZ14kUzYHA" target="_blank" class="btn-register">
-                Register Here
-            </a>
+        <!-- Barra de Ações Slick -->
+        <div class="quick-actions-bar">
+            <div class="quick-actions-text">
+                <strong>Join us</strong>
+                <p>Please register if you plan to attend in person, or join the sessions live online.</p>
+            </div>
+            <div class="quick-actions-buttons">
+                <!-- ID adicionado ao botão e spans inseridos para manipular via JS -->
+                <a href="https://meet.google.com/xwc-qjef-unf" target="_blank" class="btn btn-outline" id="meet-btn">
+                    <span class="live-indicator"></span><span id="meet-text">Google Meet</span>
+                </a>
+                <a href="https://forms.gle/cxkUcQWHZ14kUzYHA" target="_blank" class="btn btn-primary">
+                    Registration Form
+                </a>
+            </div>
         </div>
 
         <h2>Schedule</h2>
@@ -388,12 +468,12 @@
             <div class="timeline-item clickable" onclick="toggleAbstract(this)">
                 <div class="timeline-dot"></div>
                 <span class="time-badge">10:30 - 11:30</span>
-                <h4>SESSION 4: TBA</h4>
+                <h4>SESSION 4: Simultaneous Bifurcation and Coexistence of Limit Cycles in Piecewise Quadratic Systems</h4>
                 <div class="proponent"><strong>Speaker:</strong> Alex Carlucci Rezende (UFSCar)</div>
                 <br>
                 <div class="toggle-btn">+ View Abstract</div>
                 <div class="abstract-content">
-                    <p>TBA</p>
+                    <p>In this talk, we explore the simultaneous bifurcation of limit cycles in planar piecewise quadratic differential systems separated by a straight line. We will investigate how these limit cycles arise from a degenerate Hopf bifurcation at two equilibrium points in the positive and negative half-planes, as well as from an equilibrium on the separation line. All the limit cycles discussed are of small amplitude. A central focus of the presentation will be demonstrating how this bifurcation creates a novel coexistence configuration of limit cycles of type \( (3, 5, 3) \). Additionally, we will present the analytical steps proving that, in each half-plane, the maximum number of small-amplitude hyperbolic limit cycles that a quadratic vector field can have is three. Joint work with Leonardo P. C. da Cruz and Joan Torregrosa.</p>
                 </div>
             </div>
             
@@ -427,6 +507,49 @@
                 }
             }
         }
+
+        // Script para gerenciar o status "Ao Vivo" do botão do Google Meet
+        function checkLiveStatus() {
+            const now = new Date();
+            const year = now.getFullYear();
+            const month = now.getMonth() + 1; // Janeiro é 0 no Javascript
+            const day = now.getDate();
+            const hours = now.getHours();
+            const minutes = now.getMinutes();
+            const currentTime = hours * 60 + minutes; // Converte hora atual para minutos totais do dia
+
+            let isLive = false;
+
+            // MODO DE TESTE: Mude para 'false' quando o site for para o ar.
+            // Se estiver 'true', o botão sempre vai mostrar o efeito, independente da data atual.
+            const forceLiveForTesting = false;
+
+            // Regras de horário (Horário de Brasília)
+            // Dia 8 de Junho de 2026: das 13:40 às 17:30
+            const isDay1Live = (year === 2026 && month === 6 && day === 8 && currentTime >= (13 * 60 + 40) && currentTime <= (17 * 60 + 30));
+            
+            // Dia 9 de Junho de 2026: das 09:00 às 12:30
+            const isDay2Live = (year === 2026 && month === 6 && day === 9 && currentTime >= (9 * 60) && currentTime <= (12 * 60 + 30));
+
+            if (isDay1Live || isDay2Live || forceLiveForTesting) {
+                isLive = true;
+            }
+
+            const meetBtn = document.getElementById('meet-btn');
+            const meetText = document.getElementById('meet-text');
+
+            if (isLive) {
+                meetBtn.classList.add('is-live');
+                meetText.innerText = 'Join Live Session';
+            } else {
+                meetBtn.classList.remove('is-live');
+                meetText.innerText = 'Google Meet';
+            }
+        }
+
+        // Executa a checagem ao carregar a página e depois a cada 1 minuto
+        checkLiveStatus();
+        setInterval(checkLiveStatus, 60000);
     </script>
 </body>
 </html>
